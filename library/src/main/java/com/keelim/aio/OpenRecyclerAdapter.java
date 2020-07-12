@@ -16,29 +16,6 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
     private final List<OpenItem> mData;
     private final Context mContext;
 
-    // 아이템 뷰를 저장하는 뷰홀더 클래스.
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        final TextView openText1;
-        final TextView openText2;
-
-        ViewHolder(View view) {
-            super(view);
-
-            view.setOnClickListener(v -> {
-                int pos = getAdapterPosition();
-                if (pos != RecyclerView.NO_POSITION) {
-//                    mData.set(pos, "item clicked. pos=" + pos);
-                    Context context = v.getContext();
-                    notifyItemChanged(pos);
-                }
-            });
-
-            // 뷰 객체에 대한 참조. (hold strong reference)
-            openText1 = view.findViewById(R.id.open_text1);
-            openText2 = view.findViewById(R.id.open_text2);
-        }
-    }
-
     // 생성자에서 데이터 리스트 객체를 전달받음.
     public OpenRecyclerAdapter(Context context, List<OpenItem> list) {
         this.mData = list;
@@ -70,5 +47,28 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
     @Override
     public int getItemCount() {
         return mData.size();
+    }
+
+    // 아이템 뷰를 저장하는 뷰홀더 클래스.
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        final TextView openText1;
+        final TextView openText2;
+
+        ViewHolder(View view) {
+            super(view);
+
+            view.setOnClickListener(v -> {
+                int pos = getAdapterPosition();
+                if (pos != RecyclerView.NO_POSITION) {
+//                    mData.set(pos, "item clicked. pos=" + pos);
+                    Context context = v.getContext();
+                    notifyItemChanged(pos);
+                }
+            });
+
+            // 뷰 객체에 대한 참조. (hold strong reference)
+            openText1 = view.findViewById(R.id.open_text1);
+            openText2 = view.findViewById(R.id.open_text2);
+        }
     }
 }

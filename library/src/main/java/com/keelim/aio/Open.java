@@ -10,22 +10,22 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
     // 좀더 나은 코드가 있을 것 같다. 
     // 커스텀 뷰는 어떻게 작성을 하지 생각  -> 그냥 일반적인 리스트 뷰 작성인지 
     // 다른 옵션을 추가를 하여 작성을 하는 것인지
-    private Context context;
+    private final Context context;
     //SYSTEM
-    private String SYSTEM_RELEASE = null;
-    private String SYSTEM_SDK_INT = null;
-    private String SYSTEM_VERSION_CODENAME = null;
-    private String SYSTEM_VERSION_INCREMENTAL = null;
-    private String SYSTEM_BOARD = null;
-    private String SYSTEM_BOOTLOADER = null;
-    private String SYSTEM_DEVICE = null;
-    private String SYSTEM_HARDWARE = null;
-    private String SYSTEM_MANUFACTURER = null;
+    private final String SYSTEM_RELEASE = null;
+    private final String SYSTEM_SDK_INT = null;
+    private final String SYSTEM_VERSION_CODENAME = null;
+    private final String SYSTEM_VERSION_INCREMENTAL = null;
+    private final String SYSTEM_BOARD = null;
+    private final String SYSTEM_BOOTLOADER = null;
+    private final String SYSTEM_DEVICE = null;
+    private final String SYSTEM_HARDWARE = null;
+    private final String SYSTEM_MANUFACTURER = null;
 
     /*WIFI*/
-    private String WIFI_CONNECTION_INFO = null;
-    private String WIFI_STATE = null;
-    private String WIFI_DHCP_INFO = null;
+    private final String WIFI_CONNECTION_INFO = null;
+    private final String WIFI_STATE = null;
+    private final String WIFI_DHCP_INFO = null;
 
 
     public Open(OpenWifiBuilder openWifiBuilder) {
@@ -34,6 +34,18 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
 
     public Open(OpenSystemBuilder openSystemBuilder) {
         context = openSystemBuilder.context;
+    }
+
+    @SafeVarargs
+    public static List<String> plusArray(List<String>... arrays) {
+        ArrayList<String> total = new ArrayList<>();
+        if (arrays == null) return null;
+
+        for (List<String> temp : arrays) {
+            total.addAll(temp);
+        }
+
+        return total;
     }
 
     private List<OpenItem> makingStringArray(String s) { //system, wifi, Build
@@ -80,7 +92,6 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
 
                 if (WIFI_DHCP_INFO != null)
                     list.add(new OpenItem("WIFI", s));
-                ;
 
                 return list;
 
@@ -91,22 +102,9 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
 
     }
 
-    @SafeVarargs
-    public static List<String> plusArray(List<String>... arrays) {
-        ArrayList<String> total = new ArrayList<>();
-        if (arrays == null) return null;
-
-        for (List<String> temp : arrays) {
-            total.addAll(temp);
-        }
-
-        return total;
-    }
-
-
     //Builder Class
     public static class OpenSystemBuilder {
-        private Context context;
+        private final Context context;
         // required parameters
         private boolean SYSTEM_RELEASE;
         private boolean SYSTEM_SDK_INT;
@@ -174,7 +172,7 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
     }
 
     public static class OpenWifiBuilder {
-        private Context context;
+        private final Context context;
         private boolean WIFI_CONNECTION_INFO;
         private boolean WIFI_LINK_SPEED_UNITS;
         private boolean WIFI_SSID;

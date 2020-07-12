@@ -37,7 +37,7 @@ public class OpenView extends RecyclerView {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.view_open, this, false);
         addView(v);
-        layout= findViewById(R.id.open_layout);
+        layout = findViewById(R.id.open_layout);
         text1 = findViewById(R.id.open_text1);
         text2 = findViewById(R.id.open_text2);
 
