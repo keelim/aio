@@ -1,19 +1,19 @@
 package com.keelim.aio
 
 class OpenItem {
-    constructor(title: String?, desc: String?) {
-        this.title = title
+    constructor(sector: String?, desc: String?) {
+        this.sector = sector
         this.desc = desc
 
     }
 
     constructor() {
-        title = null
+        sector = null
         desc = null
 
     }
 
-    var title: String? = null
+    var sector: String? = null
     var desc: String? = null
 
 }

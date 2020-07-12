@@ -1,31 +1,22 @@
 package com.keelim.aio;
 
 import android.content.Context;
-import android.net.wifi.WifiManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public final class Open { // Builder 패턴으로 구성을 할 것 일단은 시스템 정보만
-    // 좀더 나은 코드가 있을 것 같다. 
-    // 커스텀 뷰는 어떻게 작성을 하지 생각  -> 그냥 일반적인 리스트 뷰 작성인지 
-    // 다른 옵션을 추가를 하여 작성을 하는 것인지
+public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스템 정보만
     private final Context context;
     //SYSTEM
-    private final String SYSTEM_RELEASE = null;
-    private final String SYSTEM_SDK_INT = null;
-    private final String SYSTEM_VERSION_CODENAME = null;
-    private final String SYSTEM_VERSION_INCREMENTAL = null;
-    private final String SYSTEM_BOARD = null;
-    private final String SYSTEM_BOOTLOADER = null;
-    private final String SYSTEM_DEVICE = null;
-    private final String SYSTEM_HARDWARE = null;
-    private final String SYSTEM_MANUFACTURER = null;
-
-    /*WIFI*/
-    private final String WIFI_CONNECTION_INFO = null;
-    private final String WIFI_STATE = null;
-    private final String WIFI_DHCP_INFO = null;
+    public String SYSTEM_RELEASE = null;
+    public String SYSTEM_SDK_INT = null;
+    public String SYSTEM_VERSION_CODENAME = null;
+    public String SYSTEM_VERSION_INCREMENTAL = null;
+    public String SYSTEM_BOARD = null;
+    public String SYSTEM_BOOTLOADER = null;
+    public String SYSTEM_DEVICE = null;
+    public String SYSTEM_HARDWARE = null;
+    public String SYSTEM_MANUFACTURER = null;
+    public String WIFI_CONNECTION_INFO = null;
+    public String WIFI_STATE = null;
+    public String WIFI_DHCP_INFO = null;
 
 
     public Open(OpenWifiBuilder openWifiBuilder) {
@@ -36,75 +27,10 @@ public final class Open { // Builder 패턴으로 구성을 할 것 일단은 �
         context = openSystemBuilder.context;
     }
 
-    @SafeVarargs
-    public static List<String> plusArray(List<String>... arrays) {
-        ArrayList<String> total = new ArrayList<>();
-        if (arrays == null) return null;
-
-        for (List<String> temp : arrays) {
-            total.addAll(temp);
-        }
-
-        return total;
-    }
-
-    private List<OpenItem> makingStringArray(String s) { //system, wifi, Build
-        ArrayList<OpenItem> list = new ArrayList<>();
-
-        switch (s) {
-            case "System":
-                if (SYSTEM_RELEASE != null)
-                    list.add(new OpenItem("System", s));
-
-                if (SYSTEM_SDK_INT != null)
-                    list.add(new OpenItem("System", s));
-
-
-                if (SYSTEM_VERSION_CODENAME != null)
-                    list.add(new OpenItem("System", s));
-
-                if (SYSTEM_VERSION_INCREMENTAL != null)
-                    list.add(new OpenItem("System", s));
-
-                if (SYSTEM_BOARD != null) list.add(new OpenItem("System", s));
-
-                if (SYSTEM_BOOTLOADER != null)
-                    list.add(new OpenItem("System", s));
-
-                if (SYSTEM_DEVICE != null)
-                    list.add(new OpenItem("System", s));
-
-                if (SYSTEM_HARDWARE != null)
-                    list.add(new OpenItem("System", s));
-
-                if (SYSTEM_MANUFACTURER != null)
-                    list.add(new OpenItem("System", s));
-
-                return list;
-
-            case "WIFI":
-                WifiManager wifi = (WifiManager) context.getSystemService(Context.WIFI_SERVICE);
-                if (WIFI_CONNECTION_INFO != null)
-                    list.add(new OpenItem("WIFI", s));
-
-                if (WIFI_STATE != null)
-                    list.add(new OpenItem("WIFI", s));
-
-                if (WIFI_DHCP_INFO != null)
-                    list.add(new OpenItem("WIFI", s));
-
-                return list;
-
-            default:
-                return null;
-        }
-
-
-    }
 
     //Builder Class
     public static class OpenSystemBuilder {
-        private final Context context;
+        private Context context;
         // required parameters
         private boolean SYSTEM_RELEASE;
         private boolean SYSTEM_SDK_INT;
