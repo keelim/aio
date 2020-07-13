@@ -3,24 +3,32 @@ package com.keelim.aio;
 import android.content.Context;
 import android.net.wifi.WifiManager;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class OpenUtil {
 
-    private List<String> plusArray(List<String>... arrays) {
-        ArrayList<String> total = new ArrayList<>();
+    public static List<OpenItem> plusArray(List<OpenItem>... arrays) {
+        ArrayList<OpenItem> total = new ArrayList<>();
         if (arrays == null) return null;
 
-        for (List<String> temp : arrays) {
+        for (List<OpenItem> temp : arrays) {
             total.addAll(temp);
         }
+
+        OpenItem meta = new OpenItem("Library Version", "1.0");
+        total.add(meta);
+
 
         return total;
     }
 
-    private List<OpenItem> makingStringArray(Context context, Open open, String s) { //open.SYStem, wifi, Build
-        ArrayList<OpenItem> list = new ArrayList<>(); //todo 수정을 할 것
+    @Nullable
+    public static List<OpenItem> makingStringArray(Context context, Open open, @NotNull String s) { //open.SYStem, wifi, Build
+        ArrayList<OpenItem> list = new ArrayList<>();
 
         switch (s) {
             case "System":
