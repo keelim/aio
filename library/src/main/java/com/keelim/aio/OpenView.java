@@ -7,33 +7,40 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 public class OpenView extends RecyclerView {
+    Context context;
     RecyclerView layout;
     TextView text1;
     TextView text2;
 
-    public OpenView(Context context) {
+
+    public OpenView(Context context, OpenRecyclerAdapter adapter) {
         super(context);
+        this.context = getContext();
+
         initView();
     }
 
-    public OpenView(Context context, AttributeSet attrs) {
+    public OpenView(Context context, AttributeSet attrs, OpenRecyclerAdapter adapter) {
         super(context, attrs);
+        this.context = getContext();
+
         initView();
         getAttrs(attrs);
     }
 
-    public OpenView(Context context, AttributeSet attrs, int defStyle) {
+    public OpenView(Context context, AttributeSet attrs, int defStyle, OpenRecyclerAdapter adapter) {
         super(context, attrs);
+        this.context = getContext();
         initView();
         getAttrs(attrs, defStyle);
     }
 
     private void initView() {
-
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View v = inflater.inflate(R.layout.view_open, this, false);
         addView(v);
@@ -83,6 +90,11 @@ public class OpenView extends RecyclerView {
 
     void setText(int text_resID) {
 //        text1.setText(text_resID);
+    }
+
+    public void render(OpenRecyclerAdapter adapter) {
+        this.setLayoutManager(new LinearLayoutManager(getContext()));
+        this.setAdapter(adapter);
     }
 }
 
