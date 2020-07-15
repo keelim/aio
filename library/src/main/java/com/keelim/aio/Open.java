@@ -2,6 +2,8 @@ package com.keelim.aio;
 
 import android.content.Context;
 
+import org.jetbrains.annotations.NotNull;
+
 public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스템 정보만
     private final Context context;
     //SYSTEM
@@ -19,11 +21,11 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
     public String WIFI_DHCP_INFO = null;
 
 
-    public Open(OpenWifiBuilder openWifiBuilder) {
+    public Open(@NotNull OpenWifiBuilder openWifiBuilder) {
         context = openWifiBuilder.context;
     }
 
-    public Open(OpenSystemBuilder openSystemBuilder) {
+    public Open(@NotNull OpenSystemBuilder openSystemBuilder) {
         context = openSystemBuilder.context;
     }
 

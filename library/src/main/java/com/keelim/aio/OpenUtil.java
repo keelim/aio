@@ -2,6 +2,7 @@ package com.keelim.aio;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
+import android.os.Build;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class OpenUtil {
 
+    @SafeVarargs
     public static List<OpenItem> plusArray(List<OpenItem>... arrays) {
         ArrayList<OpenItem> total = new ArrayList<>();
         if (arrays == null) return null;
@@ -33,31 +35,31 @@ public class OpenUtil {
         switch (s) {
             case "System":
                 if (open.SYSTEM_RELEASE != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", Build.VERSION.RELEASE));
 
                 if (open.SYSTEM_SDK_INT != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", String.valueOf(Build.VERSION.SDK_INT)));
 
 
                 if (open.SYSTEM_VERSION_CODENAME != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", Build.VERSION.CODENAME));
 
                 if (open.SYSTEM_VERSION_INCREMENTAL != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", Build.VERSION.INCREMENTAL));
 
-                if (open.SYSTEM_BOARD != null) list.add(new OpenItem("open.SYStem", s));
+                if (open.SYSTEM_BOARD != null) list.add(new OpenItem("System", Build.BOARD));
 
                 if (open.SYSTEM_BOOTLOADER != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", Build.BOOTLOADER));
 
                 if (open.SYSTEM_DEVICE != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", Build.DEVICE));
 
                 if (open.SYSTEM_HARDWARE != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", Build.HARDWARE));
 
                 if (open.SYSTEM_MANUFACTURER != null)
-                    list.add(new OpenItem("open.SYStem", s));
+                    list.add(new OpenItem("System", Build.MANUFACTURER));
 
                 return list;
 

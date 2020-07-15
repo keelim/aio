@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,9 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class OpenView extends RecyclerView {
     Context context;
-    RecyclerView layout;
-    TextView text1;
-    TextView text2;
 
 
     public OpenView(Context context, OpenRecyclerAdapter adapter) {
@@ -42,12 +38,8 @@ public class OpenView extends RecyclerView {
 
     private void initView() {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.view_open, this, false);
+        View v = inflater.inflate(R.layout.view_recycler, this, false);
         addView(v);
-        layout = findViewById(R.id.open_layout);
-        text1 = findViewById(R.id.open_text1);
-        text2 = findViewById(R.id.open_text2);
-
     }
 
     private void getAttrs(AttributeSet attrs) {
