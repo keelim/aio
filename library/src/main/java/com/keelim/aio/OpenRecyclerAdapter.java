@@ -40,7 +40,6 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
         String text2 = mData.get(position).getDesc();
         holder.openText1.setText(text1);
         holder.openText2.setText(text2);
-
     }
 
     // getItemCount() - 전체 데이터 갯수 리턴.
@@ -57,14 +56,14 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
         ViewHolder(View view) {
             super(view);
 
-            view.setOnClickListener(v -> {
+            /*view.setOnClickListener(v -> {
                 int pos = getAdapterPosition();
                 if (pos != RecyclerView.NO_POSITION) {
-//                    mData.set(pos, "item clicked. pos=" + pos);
+                    mData.set(pos, "item clicked. pos=" + pos);
                     Context context = v.getContext();
                     notifyItemChanged(pos);
                 }
-            });
+            });*/
 
             // 뷰 객체에 대한 참조. (hold strong reference)
             openText1 = view.findViewById(R.id.open_text1);
