@@ -1,6 +1,6 @@
-package com.keelim.aio;
+package com.keelim.aio.java;
 
-public class OpenItem {
+public class OpenItem { // data model
     private String sector;
     private String desc;
 

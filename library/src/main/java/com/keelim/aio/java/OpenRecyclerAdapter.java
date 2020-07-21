@@ -1,4 +1,4 @@
-package com.keelim.aio;
+package com.keelim.aio.java;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.keelim.aio.R;
 
 import org.jetbrains.annotations.NotNull;
 

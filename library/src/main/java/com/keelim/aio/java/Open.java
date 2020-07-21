@@ -1,4 +1,4 @@
-package com.keelim.aio;
+package com.keelim.aio.java;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;
@@ -38,7 +38,7 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
 
     //Builder Class
     public static class OpenSystemBuilder {
-        private Context context;
+        private final Context context;
         // required parameters
         private boolean SYSTEM_RELEASE;
         private boolean SYSTEM_SDK_INT;
@@ -204,10 +204,6 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
                 default:
                     return null;
             }
-
-
         }
-
-
     }
 }
