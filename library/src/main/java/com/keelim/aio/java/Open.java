@@ -5,10 +5,6 @@ import android.net.wifi.WifiManager;
 import android.os.Build;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스템 정보만
     private final Context context;
@@ -27,12 +23,26 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
     public String WIFI_DHCP_INFO = null;
 
 
-    public Open(@NotNull OpenWifiBuilder openWifiBuilder) {
-        context = openWifiBuilder.context;
+    public Open(@NotNull OpenWifiBuilder open) {
+        context = open.context;
+        WifiManager wifi = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        if (open.WIFI_DHCP_INFO) this.WIFI_CONNECTION_INFO = wifi.getConnectionInfo().toString();
+        if (open.WIFI_STATE) this.WIFI_STATE = String.valueOf(wifi.getWifiState());
+        if (open.WIFI_DHCP_INFO) this.WIFI_DHCP_INFO = String.valueOf(wifi.getDhcpInfo());
     }
 
-    public Open(@NotNull OpenSystemBuilder openSystemBuilder) {
-        context = openSystemBuilder.context;
+    public Open(@NotNull OpenSystemBuilder open) {
+        context = open.context;
+
+        if (open.SYSTEM_RELEASE) this.SYSTEM_VERSION_CODENAME = Build.VERSION.RELEASE;
+        if (open.SYSTEM_SDK_INT) this.SYSTEM_SDK_INT = String.valueOf(Build.VERSION.SDK_INT);
+        if (open.SYSTEM_VERSION_CODENAME) this.SYSTEM_VERSION_CODENAME = Build.VERSION.CODENAME;
+        if (open.SYSTEM_VERSION_INCREMENTAL) this.SYSTEM_VERSION_INCREMENTAL = Build.VERSION.INCREMENTAL;
+        if (open.SYSTEM_BOARD) this.SYSTEM_BOARD = Build.BOARD;
+        if (open.SYSTEM_BOOTLOADER) this.SYSTEM_BOOTLOADER = Build.BOOTLOADER;
+        if (open.SYSTEM_DEVICE) this.SYSTEM_DEVICE = Build.DEVICE;
+        if (open.SYSTEM_HARDWARE) this.SYSTEM_HARDWARE = Build.HARDWARE;
+        if (open.SYSTEM_MANUFACTURER) this.SYSTEM_MANUFACTURER = Build.MANUFACTURER;
     }
 
 
@@ -108,8 +118,8 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
     public static class OpenWifiBuilder {
         private final Context context;
         private boolean WIFI_CONNECTION_INFO;
-        private boolean WIFI_LINK_SPEED_UNITS;
-        private boolean WIFI_SSID;
+        private boolean WIFI_STATE;
+        private boolean WIFI_DHCP_INFO;
 
         public OpenWifiBuilder(Context context) {
             this.context = context;
@@ -120,13 +130,13 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
             return this;
         }
 
-        public OpenWifiBuilder setWIFI_LINK_SPEED_UNITS(boolean WIFI_LINK_SPEED_UNITS) {
-            this.WIFI_LINK_SPEED_UNITS = WIFI_LINK_SPEED_UNITS;
+        public OpenWifiBuilder setWIFI_STATE(boolean WIFI_STATE) {
+            this.WIFI_STATE = WIFI_STATE;
             return this;
         }
 
         public OpenWifiBuilder setWIFI_SSID(boolean WIFI_SSID) {
-            this.WIFI_SSID = WIFI_SSID;
+            this.WIFI_DHCP_INFO = WIFI_SSID;
             return this;
         }
 
@@ -134,6 +144,7 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
             return new Open(this);
         }
     }
+
 
 
 }
