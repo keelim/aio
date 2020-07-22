@@ -146,5 +146,29 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
     }
 
 
+    public static class OpenItem { // data model
+        private String sector;
+        private String desc;
 
+        public OpenItem(String sector, String desc) {
+            this.sector = sector;
+            this.desc = desc;
+        }
+
+        public String getSector() {
+            return sector;
+        }
+
+        public void setSector(String sector) {
+            this.sector = sector;
+        }
+
+        public String getDesc() {
+            return desc;
+        }
+
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
+    }
 }

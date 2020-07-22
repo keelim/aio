@@ -15,11 +15,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapter.ViewHolder> { //커스텀 adapter
-    private final List<OpenItem> mData;
+    private final List<Open.OpenItem> mData;
     private final Context mContext;
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    public OpenRecyclerAdapter(Context context, List<OpenItem> list) {
+    public OpenRecyclerAdapter(Context context, List<Open.OpenItem> list) {
         this.mData = list;
         this.mContext = context;
     }
