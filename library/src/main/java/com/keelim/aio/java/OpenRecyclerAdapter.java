@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapter.ViewHolder> { //커스텀 adapter
+public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapter.ViewHolder> { //리사이클러 뷰를 사용을 하기위 커스터 어댑터
     private final List<Open.OpenItem> mData;
     private final Context mContext;
 
@@ -35,7 +35,7 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
         return new ViewHolder(view);
     }
 
-    // onBindViewHolder() - position에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
+    // onBindViewHolder() - position 에 해당하는 데이터를 뷰홀더의 아이템뷰에 표시.
     @Override
     public void onBindViewHolder(@NotNull OpenRecyclerAdapter.ViewHolder holder, int position) {
         String text1 = mData.get(position).getSector();
@@ -51,7 +51,7 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
     }
 
     // 아이템 뷰를 저장하는 뷰홀더 클래스.
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView openText1;
         final TextView openText2;
 

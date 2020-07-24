@@ -6,9 +6,9 @@ import android.os.Build;
 
 import org.jetbrains.annotations.NotNull;
 
-public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스템 정보만
+public class Open { // Builder 패턴으로 구성
     private final Context context;
-    //SYSTEM
+    //SYSTEM and Wifi constant
     public String SYSTEM_RELEASE = null;
     public String SYSTEM_SDK_INT = null;
     public String SYSTEM_VERSION_CODENAME = null;
@@ -26,7 +26,8 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
     public Open(@NotNull OpenWifiBuilder open) {
         context = open.context;
         WifiManager wifi = (WifiManager) context.getApplicationContext().getSystemService(Context.WIFI_SERVICE);
-        if (open.WIFI_DHCP_INFO) this.WIFI_CONNECTION_INFO = wifi.getConnectionInfo().toString();
+        if (open.WIFI_CONNECTION_INFO)
+            this.WIFI_CONNECTION_INFO = wifi.getConnectionInfo().toString();
         if (open.WIFI_STATE) this.WIFI_STATE = String.valueOf(wifi.getWifiState());
         if (open.WIFI_DHCP_INFO) this.WIFI_DHCP_INFO = String.valueOf(wifi.getDhcpInfo());
     }
@@ -37,7 +38,8 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
         if (open.SYSTEM_RELEASE) this.SYSTEM_VERSION_CODENAME = Build.VERSION.RELEASE;
         if (open.SYSTEM_SDK_INT) this.SYSTEM_SDK_INT = String.valueOf(Build.VERSION.SDK_INT);
         if (open.SYSTEM_VERSION_CODENAME) this.SYSTEM_VERSION_CODENAME = Build.VERSION.CODENAME;
-        if (open.SYSTEM_VERSION_INCREMENTAL) this.SYSTEM_VERSION_INCREMENTAL = Build.VERSION.INCREMENTAL;
+        if (open.SYSTEM_VERSION_INCREMENTAL)
+            this.SYSTEM_VERSION_INCREMENTAL = Build.VERSION.INCREMENTAL;
         if (open.SYSTEM_BOARD) this.SYSTEM_BOARD = Build.BOARD;
         if (open.SYSTEM_BOOTLOADER) this.SYSTEM_BOOTLOADER = Build.BOOTLOADER;
         if (open.SYSTEM_DEVICE) this.SYSTEM_DEVICE = Build.DEVICE;
@@ -117,8 +119,8 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
 
     public static class OpenWifiBuilder {
         private final Context context;
-        private boolean WIFI_CONNECTION_INFO;
         private boolean WIFI_STATE;
+        private boolean WIFI_CONNECTION_INFO;
         private boolean WIFI_DHCP_INFO;
 
         public OpenWifiBuilder(Context context) {
@@ -143,6 +145,7 @@ public class Open { // Builder 패턴으로 구성을 할 것 일단은 시스�
         public Open build() {
             return new Open(this);
         }
+
     }
 
 
