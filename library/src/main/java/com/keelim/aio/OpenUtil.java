@@ -3,7 +3,6 @@ package com.keelim.aio;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +40,9 @@ public class OpenUtil { // 오픈소스를 잘 사용을 하기 위한 utils
         if (open.WIFI_STATE != null) list.add(new Open.OpenItem("WIFI", open.WIFI_STATE));
         if (open.WIFI_DHCP_INFO != null) list.add(new Open.OpenItem("WIFI", open.WIFI_DHCP_INFO));
 
-        return OpenUtil.addLicenseCode(list);
+        Open.OpenItem meta = new Open.OpenItem("Library Version", "1.0");
+        list.add(meta); // 라이센스 정보 넣을 것
+
+        return list;
     }
 }
