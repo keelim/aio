@@ -1,4 +1,4 @@
-package com.keelim.aio.java;
+package com.keelim.aio;
 
 import android.content.Context;
 import android.net.wifi.WifiManager;

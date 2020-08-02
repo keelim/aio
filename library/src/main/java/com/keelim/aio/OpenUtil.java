@@ -1,4 +1,4 @@
-package com.keelim.aio.java;
+package com.keelim.aio;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -62,6 +62,6 @@ public class OpenUtil {
 
         if (open.WIFI_DHCP_INFO != null) list.add(new Open.OpenItem("WIFI", open.WIFI_DHCP_INFO));
 
-        return list;
+        return OpenUtil.addLicenseCode(list);
     }
 }
