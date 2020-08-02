@@ -15,11 +15,13 @@ import java.util.List;
 public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapter.ViewHolder> { //리사이클러 뷰를 사용을 하기위 커스터 어댑터
     private final List<Open.OpenItem> mData;
     private final Context mContext;
+    private final int resource;
 
     // 생성자에서 데이터 리스트 객체를 전달받음.
-    public OpenRecyclerAdapter(Context context, List<Open.OpenItem> list) {
+    public OpenRecyclerAdapter(Context context, List<Open.OpenItem> list, int resource) {
         this.mData = list;
         this.mContext = context;
+        this.resource = resource;
     }
 
     // onCreateViewHolder() - 아이템 뷰를 위한 뷰홀더 객체 생성하여 리턴.
@@ -28,7 +30,7 @@ public class OpenRecyclerAdapter extends RecyclerView.Adapter<OpenRecyclerAdapte
     public OpenRecyclerAdapter.ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
         Context context = parent.getContext();
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View view = inflater.inflate(R.layout.view_open, parent, false);
+        View view = inflater.inflate(resource, parent, false);
 
         return new ViewHolder(view);
     }
